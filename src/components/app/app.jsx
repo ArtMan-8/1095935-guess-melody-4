@@ -38,6 +38,7 @@ class App extends PureComponent {
 
 App.propTypes = {
   errorsCount: PropTypes.number.isRequired,
+  question: PropTypes.array.isRequired,
 };
 
 export default App;
