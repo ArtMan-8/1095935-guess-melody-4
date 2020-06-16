@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import {GameType} from '../../const.js';
 
 import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
@@ -20,7 +20,7 @@ class App extends PureComponent {
     const {questions} = this.props;
 
     return (
-      <BrowserRouter basename="/1095935-guess-melody-4">
+      <BrowserRouter>
         <Switch>
           <Route exact path="/">
             {this._renderGameScreen()}
