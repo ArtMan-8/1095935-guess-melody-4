@@ -1,48 +1,99 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {GameType} from '../../const.js';
 
 import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
-import QuestionArtistScreen from '../question-artist/question-artist.jsx';
-import QuestionGenreScreen from '../question-genre/question-genre.jsx';
-
+import QuestionArtistScreen from '../question-artist/question-artist-screen.jsx';
+import QuestionGenreScreen from '../question-genre/question-genre-screen.jsx';
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      step: -1,
+    };
   }
 
   render() {
-    const {errorsCount, question} = this.props;
+    const {questions} = this.props;
 
     return (
-      <BrowserRouter>
+      <BrowserRouter basename="/1095935-guess-melody-4">
         <Switch>
           <Route exact path="/">
-            <WelcomeScreen
-              errorsCount = {errorsCount}
-              onWelcomeButtonClick = {() => {}}
-            />
+            {this._renderGameScreen()}
           </Route>
           <Route exact path="/dev-artist">
             <QuestionArtistScreen
-              question = {question[1]}
+              question = {questions[1]}
+              onAnswer = {() => {}}
             />
           </Route>
           <Route exact path="/dev-genre">
             <QuestionGenreScreen
-              question = {question[0]}
+              question = {questions[0]}
+              onAnswer = {() => {}}
             />
           </Route>
         </Switch>
       </BrowserRouter>
     );
   }
+
+  _renderGameScreen() {
+    const {errorsCount, questions} = this.props;
+    const {step} = this.state;
+    const question = questions[step];
+
+    if (step === -1 || step >= questions.length) {
+      return (
+        <WelcomeScreen
+          errorsCount = {errorsCount}
+          onWelcomeButtonClick = {() => {
+            this.setState({
+              step: 0,
+            });
+          }}
+        />
+      );
+    }
+
+    if (question) {
+      switch (question.type) {
+        case GameType.ARTIST:
+          return (
+            <QuestionArtistScreen
+              question = {question}
+              onAnswer = {() => {
+                this.setState((prevState) => ({
+                  step: prevState.step + 1,
+                }));
+              }}
+            />
+          );
+        case GameType.GENRE:
+          return (
+            <QuestionGenreScreen
+              question = {question}
+              onAnswer = {() => {
+                this.setState((prevState) => ({
+                  step: prevState.step + 1,
+                }));
+              }}
+            />
+          );
+      }
+    }
+
+    return null;
+  }
 }
 
 App.propTypes = {
   errorsCount: PropTypes.number.isRequired,
-  question: PropTypes.array.isRequired,
+  questions: PropTypes.array.isRequired,
 };
 
 export default App;

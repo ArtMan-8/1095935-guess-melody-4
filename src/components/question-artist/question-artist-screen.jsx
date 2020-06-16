@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {GameType} from '../../const.js';
 
 const QuestionArtistScreen = (props) => {
-  const {question} = props;
+  const {question, onAnswer} = props;
   const {song, answers} = question;
 
   return (
@@ -11,7 +11,7 @@ const QuestionArtistScreen = (props) => {
       <header className="game__header">
         <a className="game__back" href="#">
           <span className="visually-hidden">Сыграть ещё раз</span>
-          <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию"/>
+          <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
         </a>
 
         <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
@@ -20,9 +20,9 @@ const QuestionArtistScreen = (props) => {
         </svg>
 
         <div className="game__mistakes">
-          <div className="wrong"></div>
-          <div className="wrong"></div>
-          <div className="wrong"></div>
+          <div className="wrong" />
+          <div className="wrong" />
+          <div className="wrong" />
         </div>
       </header>
 
@@ -30,7 +30,7 @@ const QuestionArtistScreen = (props) => {
         <h2 className="game__title">Кто исполняет эту песню?</h2>
         <div className="game__track">
           <div className="track">
-            <button className="track__button track__button--play" type="button"></button>
+            <button className="track__button track__button--play" type="button" />
             <div className="track__status">
               <audio
                 src={song.src}
@@ -45,9 +45,13 @@ const QuestionArtistScreen = (props) => {
               <input className="artist__input visually-hidden" type="radio" name="answer"
                 value={`answer-${i}`}
                 id={`answer-${i}`}
+                onChange={(evt) => {
+                  evt.preventDefault();
+                  onAnswer(question, answer);
+                }}
               />
               <label className="artist__name" htmlFor={`answer-${i}`}>
-                <img className="artist__picture" src={answer.picture} alt={answer.artist}/>
+                <img className="artist__picture" src={answer.picture} alt={answer.artist} />
                 {answer.artist}
               </label>
             </div>
@@ -70,6 +74,7 @@ QuestionArtistScreen.propTypes = {
       artist: PropTypes.string.isRequired,
     })).isRequired,
   }),
+  onAnswer: PropTypes.func.isRequired,
 };
 
 export default QuestionArtistScreen;
