@@ -30,7 +30,9 @@ class App extends PureComponent {
             />
           </Route>
           <Route exact path="/dev-genre">
-            <QuestionGenreScreen />
+            <QuestionGenreScreen
+              question = {question[0]}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
