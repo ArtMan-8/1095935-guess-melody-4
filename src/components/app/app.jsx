@@ -6,6 +6,7 @@ import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 import QuestionArtistScreen from '../question-artist/question-artist.jsx';
 import QuestionGenreScreen from '../question-genre/question-genre.jsx';
 
+
 class App extends PureComponent {
   constructor(props) {
     super(props);
