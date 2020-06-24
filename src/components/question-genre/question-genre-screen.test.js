@@ -20,17 +20,19 @@ const question = {
   }],
 };
 
-it(`QuestionGenreScreen is rendered correctly`, () => {
-  const tree = renderer.create((
-    <QuestionGenreScreen
-      question = {question}
-      onAnswer = {() => {}}
-    />
-  ), {
-    createNodeMock: () => {
-      return {};
-    }
-  }).toJSON();
+describe(`QuestionGenreScreen`, () => {
+  it(`Render`, () => {
+    const tree = renderer.create((
+      <QuestionGenreScreen
+        question = {question}
+        onAnswer = {() => {}}
+      />
+    ), {
+      createNodeMock: () => {
+        return {};
+      }
+    }).toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
+  });
 });

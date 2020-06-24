@@ -4,6 +4,7 @@ import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import {GameType} from '../../const.js';
 
 import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
+import GameScreen from '../game-screen/game-screen.jsx';
 import QuestionArtistScreen from '../question-artist/question-artist-screen.jsx';
 import QuestionGenreScreen from '../question-genre/question-genre-screen.jsx';
 
@@ -64,25 +65,29 @@ class App extends PureComponent {
       switch (question.type) {
         case GameType.ARTIST:
           return (
-            <QuestionArtistScreen
-              question = {question}
-              onAnswer = {() => {
-                this.setState((prevState) => ({
-                  step: prevState.step + 1,
-                }));
-              }}
-            />
+            <GameScreen type={question.type}>
+              <QuestionArtistScreen
+                question = {question}
+                onAnswer = {() => {
+                  this.setState((prevState) => ({
+                    step: prevState.step + 1,
+                  }));
+                }}
+              />
+            </GameScreen>
           );
         case GameType.GENRE:
           return (
-            <QuestionGenreScreen
-              question = {question}
-              onAnswer = {() => {
-                this.setState((prevState) => ({
-                  step: prevState.step + 1,
-                }));
-              }}
-            />
+            <GameScreen type={question.type}>
+              <QuestionGenreScreen
+                question = {question}
+                onAnswer = {() => {
+                  this.setState((prevState) => ({
+                    step: prevState.step + 1,
+                  }));
+                }}
+              />
+            </GameScreen>
           );
       }
     }
