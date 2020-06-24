@@ -26,7 +26,11 @@ describe(`QuestionArtistScreen`, () => {
         <QuestionArtistScreen
           question = {question}
           onAnswer = {() => {}}
-        />
+        />, {
+          createNodeMock: () => {
+            return {};
+          }
+        }
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

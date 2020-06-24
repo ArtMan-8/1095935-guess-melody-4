@@ -31,11 +31,11 @@ const GameScreen = (props) => {
 };
 
 GameScreen.propTypes = {
-  type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
+  type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
 };
 
 export default GameScreen;
