@@ -2,11 +2,15 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import {GameType} from '../../const.js';
+import withActivePlayer from '../../hocs/with-active-player/with-active-player.jsx';
 
 import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 import GameScreen from '../game-screen/game-screen.jsx';
 import QuestionArtistScreen from '../question-artist/question-artist-screen.jsx';
 import QuestionGenreScreen from '../question-genre/question-genre-screen.jsx';
+
+const QuestionArtistScreenWrapped = withActivePlayer(QuestionArtistScreen);
+const QuestionGenreScreenWrapped = withActivePlayer(QuestionGenreScreen);
 
 class App extends PureComponent {
   constructor(props) {
@@ -27,13 +31,13 @@ class App extends PureComponent {
             {this._renderGameScreen()}
           </Route>
           <Route exact path="/dev-artist">
-            <QuestionArtistScreen
+            <QuestionArtistScreenWrapped
               question = {questions[1]}
               onAnswer = {() => {}}
             />
           </Route>
           <Route exact path="/dev-genre">
-            <QuestionGenreScreen
+            <QuestionGenreScreenWrapped
               question = {questions[0]}
               onAnswer = {() => {}}
             />
@@ -66,7 +70,7 @@ class App extends PureComponent {
         case GameType.ARTIST:
           return (
             <GameScreen type={question.type}>
-              <QuestionArtistScreen
+              <QuestionArtistScreenWrapped
                 question = {question}
                 onAnswer = {() => {
                   this.setState((prevState) => ({
@@ -79,7 +83,7 @@ class App extends PureComponent {
         case GameType.GENRE:
           return (
             <GameScreen type={question.type}>
-              <QuestionGenreScreen
+              <QuestionGenreScreenWrapped
                 question = {question}
                 onAnswer = {() => {
                   this.setState((prevState) => ({

@@ -83,9 +83,9 @@ class AudioPlayer extends PureComponent {
 }
 
 AudioPlayer.propTypes = {
+  src: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
-  src: PropTypes.string.isRequired,
 };
 
 export default AudioPlayer;
