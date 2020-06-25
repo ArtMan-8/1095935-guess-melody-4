@@ -38,15 +38,15 @@ const questions = [
   },
 ];
 
-it(`Render App`, () => {
-  const tree = renderer
-    .create(
+describe(`App`, () => {
+  it(`Render`, () => {
+    const tree = renderer.create(
         <App
           errorsCount = {3}
           questions = {questions}
         />
-    )
-    .toJSON();
+    ).toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
+  });
 });
