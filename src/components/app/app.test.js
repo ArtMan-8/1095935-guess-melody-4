@@ -51,7 +51,7 @@ describe(`App`, () => {
     const tree = renderer.create(
         <Provider store={store}>
           <App
-            errorsCount={3}
+            maxMistakes={3}
             questions={questions}
             step={-1}
             onUserAnswer={() => {}}
@@ -70,7 +70,7 @@ describe(`App`, () => {
     const tree = renderer.create(
         <Provider store={store}>
           <App
-            errorsCount={3}
+            maxMistakes={3}
             questions={questions}
             step={0}
             onUserAnswer={() => {}}
@@ -93,7 +93,7 @@ describe(`App`, () => {
     const tree = renderer.create(
         <Provider store={store}>
           <App
-            errorsCount={3}
+            maxMistakes={3}
             questions={questions}
             step={1}
             onUserAnswer={() => {}}

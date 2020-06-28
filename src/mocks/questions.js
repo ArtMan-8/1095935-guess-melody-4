@@ -24,13 +24,13 @@ export default [
       src: `https://upload.wikimedia.org/wikipedia/commons/1/1d/Prelude_en_Fa_Majeur_BWV_927.ogg`,
     },
     answers: [{
-      picture: `${AVATAR_URL}/${Math.random()}`,
+      picture: `${AVATAR_URL}/A`,
       artist: `John Snow`,
     }, {
-      picture: `${AVATAR_URL}/${Math.random()}`,
+      picture: `${AVATAR_URL}/B`,
       artist: `Jack Daniels`,
     }, {
-      picture: `${AVATAR_URL}/${Math.random()}`,
+      picture: `${AVATAR_URL}/C`,
       artist: `Jim Beam`,
     }],
   }
