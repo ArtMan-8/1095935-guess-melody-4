@@ -7,7 +7,10 @@ import {reducer} from './reducer.js';
 import App from './components/app/app.jsx';
 import questions from './mocks/questions.js';
 
-const store = createStore(reducer);
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+);
 
 const Settings = {
   ERRORS_COUNT: 3
