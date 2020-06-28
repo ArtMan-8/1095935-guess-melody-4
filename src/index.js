@@ -19,8 +19,8 @@ const Settings = {
 ReactDOM.render(
     <Provider store={store}>
       <App
-        errorsCount = {Settings.ERRORS_COUNT}
-        questions = {questions}
+        errorsCount={Settings.ERRORS_COUNT}
+        questions={questions}
       />
     </Provider>,
     document.querySelector(`#root`)
