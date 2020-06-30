@@ -53,18 +53,17 @@ class AudioPlayer extends PureComponent {
 
     return (
       <Fragment>
-        <button
-          className = {`track__button track__button--${isPlaying ? `pause` : `play`}`}
-          type = 'button'
-          disabled = {isLoading}
-          onClick = {() => {
+        <button type="button"
+          className={`track__button track__button--${isPlaying ? `pause` : `play`}`}
+          disabled={isLoading}
+          onClick={() => {
             this.setState({isPlaying: !this.state.isPlaying});
             onPlayButtonClick();
           }}
         />
-        <div className='track__status'>
+        <div className="track__status">
           <audio
-            ref = {this._audioRef}
+            ref={this._audioRef}
           />
         </div>
       </Fragment>

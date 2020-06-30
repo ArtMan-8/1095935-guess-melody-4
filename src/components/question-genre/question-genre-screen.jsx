@@ -20,7 +20,7 @@ class QuestionGenreScreen extends PureComponent {
       <section className="game__screen">
         <h2 className="game__title">Выберите {genre} треки</h2>
         <form className="game__tracks"
-          onSubmit = {(evt) => {
+          onSubmit={(evt) => {
             evt.preventDefault();
             onAnswer(question, this.state.answers);
           }}
