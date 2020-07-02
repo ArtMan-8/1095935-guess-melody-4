@@ -9,11 +9,12 @@ import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 import GameScreen from '../game-screen/game-screen.jsx';
 
 import withActivePlayer from '../../hocs/with-active-player/with-active-player.jsx';
+import withUserAnswer from '../../hocs/with-user-answer/with-user-answer.js';
 import QuestionArtistScreen from '../question-artist/question-artist-screen.jsx';
 import QuestionGenreScreen from '../question-genre/question-genre-screen.jsx';
 
 const QuestionArtistScreenWrapped = withActivePlayer(QuestionArtistScreen);
-const QuestionGenreScreenWrapped = withActivePlayer(QuestionGenreScreen);
+const QuestionGenreScreenWrapped = withActivePlayer(withUserAnswer(QuestionGenreScreen));
 
 class App extends PureComponent {
 
