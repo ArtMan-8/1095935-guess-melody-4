@@ -25,8 +25,11 @@ describe(`AudioPlayer`, () => {
         <AudioPlayer
           src = {song.src}
           isPlaying = {true}
+          isLoading={true}
           onPlayButtonClick = {handlePlayButtonClick}
-        />
+        >
+          <audio />
+        </AudioPlayer>
     );
 
     const button = screen.find(playButton);
@@ -40,8 +43,11 @@ describe(`AudioPlayer`, () => {
         <AudioPlayer
           src = {song.src}
           isPlaying = {false}
+          isLoading={true}
           onPlayButtonClick = {handlePlayButtonClick}
-        />
+        >
+          <audio />
+        </AudioPlayer>
     );
 
     const button = screen.find(playButton);
