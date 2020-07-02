@@ -57,6 +57,7 @@ describe(`App`, () => {
             step={-1}
             onUserAnswer={() => {}}
             onWelcomeButtonClick={() => {}}
+            resetGame={() => {}}
           />
         </Provider>).toJSON();
 
@@ -77,6 +78,7 @@ describe(`App`, () => {
             step={0}
             onUserAnswer={() => {}}
             onWelcomeButtonClick={() => {}}
+            resetGame={() => {}}
           />
         </Provider>, {
           createNodeMock: () => {
@@ -101,6 +103,7 @@ describe(`App`, () => {
             step={1}
             onUserAnswer={() => {}}
             onWelcomeButtonClick={() => {}}
+            resetGame={() => {}}
           />
         </Provider>, {
           createNodeMock: () => {
@@ -125,6 +128,7 @@ describe(`App`, () => {
               questions={questions}
               onUserAnswer={() => {}}
               onWelcomeButtonClick={() => {}}
+              resetGame={() => {}}
               step={1}
             />
           </Provider>, {
@@ -151,6 +155,7 @@ describe(`App`, () => {
               questions={questions}
               onUserAnswer={() => {}}
               onWelcomeButtonClick={() => {}}
+              resetGame={() => {}}
               step={3}
             />
           </Provider>, {

@@ -28,6 +28,7 @@ class App extends PureComponent {
       step,
       onUserAnswer,
       onWelcomeButtonClick,
+      resetGame,
     } = this.props;
 
     const question = questions[step];
@@ -44,7 +45,7 @@ class App extends PureComponent {
     if (mistakes >= maxMistakes) {
       return (
         <GameOverScreen
-          onReplayButtonClick={() => {}}
+          onReplayButtonClick={resetGame}
         />
       );
     }
@@ -54,7 +55,7 @@ class App extends PureComponent {
         <GameWinScreen
           questionsCount={questions.length}
           mistakesCount={mistakes}
-          onReplayButtonClick={() => {}}
+          onReplayButtonClick={resetGame}
         />
       );
     }
@@ -119,6 +120,7 @@ App.propTypes = {
   step: PropTypes.number.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
   onWelcomeButtonClick: PropTypes.func.isRequired,
+  resetGame: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -135,6 +137,9 @@ const mapDispatchToProps = (dispatch) => ({
   onUserAnswer(question, answer) {
     dispatch(ActionCreator.incrementStep());
     dispatch(ActionCreator.incrementMistake(question, answer));
+  },
+  resetGame() {
+    dispatch(ActionCreator.resetGame());
   },
 });
 
