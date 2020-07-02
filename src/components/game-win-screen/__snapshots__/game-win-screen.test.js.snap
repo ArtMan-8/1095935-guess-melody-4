@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`WinScreen Should render with 2 questions With 0 mistake 1`] = `
+exports[`GameWinScreen Should render with 2 questions With 0 mistake 1`] = `
 <section
   className="result"
 >
@@ -38,7 +38,7 @@ exports[`WinScreen Should render with 2 questions With 0 mistake 1`] = `
 </section>
 `;
 
-exports[`WinScreen Should render with 2 questions With 1 mistake 1`] = `
+exports[`GameWinScreen Should render with 2 questions With 1 mistake 1`] = `
 <section
   className="result"
 >
@@ -76,7 +76,7 @@ exports[`WinScreen Should render with 2 questions With 1 mistake 1`] = `
 </section>
 `;
 
-exports[`WinScreen Should render with 3 questions With 0 mistake 1`] = `
+exports[`GameWinScreen Should render with 3 questions With 0 mistake 1`] = `
 <section
   className="result"
 >
@@ -114,7 +114,7 @@ exports[`WinScreen Should render with 3 questions With 0 mistake 1`] = `
 </section>
 `;
 
-exports[`WinScreen Should render with 3 questions With 1 mistake 1`] = `
+exports[`GameWinScreen Should render with 3 questions With 1 mistake 1`] = `
 <section
   className="result"
 >
