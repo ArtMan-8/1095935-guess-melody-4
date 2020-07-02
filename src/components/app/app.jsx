@@ -7,6 +7,8 @@ import {ActionCreator} from '../../reducer.js';
 import {GameType} from '../../const.js';
 import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 import GameScreen from '../game-screen/game-screen.jsx';
+import GameWinScreen from '../game-win-screen/game-win-screen.jsx';
+import GameOverScreen from '../game-over-screen/game-over-screen.jsx';
 
 import withActivePlayer from '../../hocs/with-active-player/with-active-player.jsx';
 import withUserAnswer from '../../hocs/with-user-answer/with-user-answer.js';
@@ -21,6 +23,7 @@ class App extends PureComponent {
   _renderGameScreen() {
     const {
       maxMistakes,
+      mistakes,
       questions,
       step,
       onUserAnswer,
@@ -29,11 +32,29 @@ class App extends PureComponent {
 
     const question = questions[step];
 
-    if (step === -1 || step >= questions.length) {
+    if (step === -1) {
       return (
         <WelcomeScreen
           errorsCount={maxMistakes}
           onWelcomeButtonClick={onWelcomeButtonClick}
+        />
+      );
+    }
+
+    if (mistakes >= maxMistakes) {
+      return (
+        <GameOverScreen
+          onReplayButtonClick={() => {}}
+        />
+      );
+    }
+
+    if (step >= questions.length) {
+      return (
+        <GameWinScreen
+          questionsCount={questions.length}
+          mistakesCount={mistakes}
+          onReplayButtonClick={() => {}}
         />
       );
     }
@@ -93,6 +114,7 @@ class App extends PureComponent {
 
 App.propTypes = {
   maxMistakes: PropTypes.number.isRequired,
+  mistakes: PropTypes.number.isRequired,
   questions: PropTypes.array.isRequired,
   step: PropTypes.number.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
@@ -103,6 +125,7 @@ const mapStateToProps = (state) => ({
   step: state.step,
   maxMistakes: state.maxMistakes,
   questions: state.questions,
+  mistakes: state.mistakes,
 });
 
 const mapDispatchToProps = (dispatch) => ({
